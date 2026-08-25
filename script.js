@@ -14,7 +14,7 @@ const CAT_META = {
 };
 const byZ = {}; ELEMENTS.forEach(e=>byZ[e.Z]=e);
 
-/* ---------- THEME ---------- */
+//THEME
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 function setTheme(t){
@@ -27,7 +27,7 @@ function setTheme(t){
 setTheme(localStorage.getItem('px-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 themeToggle.addEventListener('click', ()=> setTheme(document.body.getAttribute('data-theme')==='dark' ? 'light':'dark'));
 
-/* ---------- MOBILE NAV ---------- */
+// MOBILE NAV
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileNav = document.getElementById('mobileNav');
 hamburgerBtn.addEventListener('click', ()=>{
@@ -36,7 +36,7 @@ hamburgerBtn.addEventListener('click', ()=>{
 });
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>mobileNav.classList.remove('open')));
 
-/* ---------- BUILD TABLE ---------- */
+//BUILD TABLE
 const ptable = document.getElementById('ptable');
 const placeholders = [
   {col:3, row:6, label:"57–71\nLanthanides"},
@@ -83,7 +83,7 @@ function updateReadout(e){
     `<b>${e.name}</b> (${e.sym}) · Z=${e.Z} · ${e.mass} u · ${e.cat} · ${e.phase} at room temp · Period ${e.period}, Group ${e.group}`;
 }
 
-/* ---------- LEGEND ---------- */
+//LEGEND 
 const legend = document.getElementById('legend');
 const footerCats = document.getElementById('footerCats');
 Object.entries(CAT_META).forEach(([name, m])=>{
@@ -96,7 +96,7 @@ Object.entries(CAT_META).forEach(([name, m])=>{
   footerCats.appendChild(li);
 });
 
-/* ---------- FILTER CHIPS ---------- */
+//FILTER CHIPS 
 const catChips = document.getElementById('catChips');
 const activeCats = new Set();
 Object.entries(CAT_META).forEach(([name,m])=>{
@@ -156,7 +156,7 @@ document.getElementById('clearFiltersBtn').addEventListener('click', ()=>{
   applyFilters();
 });
 
-/* ---------- PANEL ---------- */
+//PANEL 
 const panel = document.getElementById('panel');
 const scrim = document.getElementById('scrim');
 let lastFocused = null;
@@ -276,7 +276,7 @@ function closePanel(){
 scrim.addEventListener('click', closePanel);
 document.addEventListener('keydown', ev=>{ if(ev.key==='Escape') closePanel(); });
 
-/* ---------- RANDOM ---------- */
+//RANDOM 
 function randomElement(){
   const e = ELEMENTS[Math.floor(Math.random()*ELEMENTS.length)];
   document.getElementById('table').scrollIntoView({behavior:'smooth', block:'start'});
@@ -285,7 +285,7 @@ function randomElement(){
 document.getElementById('heroRandomBtn').addEventListener('click', randomElement);
 document.getElementById('tableRandomBtn').addEventListener('click', randomElement);
 
-/* ---------- COMPARE ---------- */
+//COMPARE 
 const compareA = document.getElementById('compareA');
 const compareB = document.getElementById('compareB');
 ELEMENTS.forEach(e=>{
@@ -316,7 +316,7 @@ compareA.addEventListener('change', renderCompare);
 compareB.addEventListener('change', renderCompare);
 renderCompare();
 
-/* ---------- QUIZ ---------- */
+//QUIZ 
 const quizPanel = document.getElementById('quizPanel');
 let quizState = {i:0, score:0, questions:[]};
 
